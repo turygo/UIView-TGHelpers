@@ -9,7 +9,7 @@
 
 #define nameOfVar(x) [NSString stringWithFormat:@"%s", #x]
 
-static inline CGRect CGRectRound(CGRect rect) {return CGRectMake((NSInteger)rect.origin.x, (NSInteger)rect.origin.y, (NSInteger)rect.size.width, (NSInteger)rect.size.height); }
+static inline CGRect CGRectEnsureHolePixels(CGRect rect) {return CGRectMake(roundf(rect.origin.x), roundf(rect.origin.y), ceilf(rect.size.width), ceilf(rect.size.height)); }
 static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
 
 @implementation UIView (Helpers)
@@ -176,12 +176,12 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
 
 - (void)centerAlignHorizontalForView:(UIView *)view offset:(CGFloat)offset
 {
-    [self setFrame:CGRectRound(CGRectMake((CGRectGetWidth([view frame]) / 2.0f) - (CGRectGetWidth([self frame]) / 2.0f) + offset, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake((CGRectGetWidth([view frame]) / 2.0f) - (CGRectGetWidth([self frame]) / 2.0f) + offset, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)centerAlignVerticalForView:(UIView *)view offset:(CGFloat)offset
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([self frame]), (CGRectGetHeight([view frame]) / 2.0f) - (CGRectGetHeight([self frame]) / 2.0f) + offset, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([self frame]), (CGRectGetHeight([view frame]) / 2.0f) - (CGRectGetHeight([self frame]) / 2.0f) + offset, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)leftAlignForView:(UIView *)view
@@ -206,22 +206,22 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
 
 - (void)leftAlignForView:(UIView *)view offset:(CGFloat)offset
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([view frame]) + offset, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([view frame]) + offset, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)rightAlignForView:(UIView *)view offset:(CGFloat)offset
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMaxX([view frame]) - CGRectGetWidth([self frame]) - offset, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMaxX([view frame]) - CGRectGetWidth([self frame]) - offset, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)topAlignForView:(UIView *)view offset:(CGFloat)offset
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([self frame]), [view frame].origin.y + offset, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([self frame]), [view frame].origin.y + offset, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)bottomAlignForView:(UIView *)view offset:(CGFloat)offset
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([self frame]), CGRectGetMaxY([view frame]) - CGRectGetHeight([self frame]) - offset, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([self frame]), CGRectGetMaxY([view frame]) - CGRectGetHeight([self frame]) - offset, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)topAlignForSuperViewOffset:(CGFloat)offset
@@ -324,22 +324,22 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
 
 - (void)setFrameOriginY:(CGFloat)y
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([self frame]), y, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([self frame]), y, CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)setFrameOriginX:(CGFloat)x
 {
-    [self setFrame:CGRectRound(CGRectMake(x, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(x, CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), CGRectGetHeight([self frame])))];
 }
 
 - (void)setFrameSizeWidth:(CGFloat)width
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([self frame]), CGRectGetMinY([self frame]), width, CGRectGetHeight([self frame])))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([self frame]), CGRectGetMinY([self frame]), width, CGRectGetHeight([self frame])))];
 }
 
 - (void)setFrameSizeHeight:(CGFloat)height
 {
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX([self frame]), CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), height))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX([self frame]), CGRectGetMinY([self frame]), CGRectGetWidth([self frame]), height))];
 }
 
 #pragma mark -
@@ -370,7 +370,7 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
     CGRect frame = [self frame];
     CGRect viewFrame = [view frame];
     
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX(frame), CGRectGetMaxY(viewFrame) + offset, CGRectGetWidth(frame), CGRectGetHeight(frame)))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX(frame), CGRectGetMaxY(viewFrame) + offset, CGRectGetWidth(frame), CGRectGetHeight(frame)))];
 }
 
 - (void)setFrameOriginYAboveView:(UIView *)view offset:(CGFloat)offset
@@ -378,7 +378,7 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
     CGRect frame = [self frame];
     CGRect viewFrame = [view frame];
     
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(viewFrame) - CGRectGetHeight([self frame]) - offset, CGRectGetWidth(frame), CGRectGetHeight(frame)))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(viewFrame) - CGRectGetHeight([self frame]) - offset, CGRectGetWidth(frame), CGRectGetHeight(frame)))];
 }
 
 - (void)setFrameOriginXRightOfView:(UIView *)view offset:(CGFloat)offset
@@ -386,7 +386,7 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
     CGRect frame = [self frame];
     CGRect viewFrame = [view frame];
     
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMaxX(viewFrame) + offset, CGRectGetMinY(frame), CGRectGetWidth(frame), CGRectGetHeight(frame)))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMaxX(viewFrame) + offset, CGRectGetMinY(frame), CGRectGetWidth(frame), CGRectGetHeight(frame)))];
 }
 
 - (void)setFrameOriginXLeftOfView:(UIView *)view offset:(CGFloat)offset
@@ -394,7 +394,7 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
     CGRect frame = [self frame];
     CGRect viewFrame = [view frame];
     
-    [self setFrame:CGRectRound(CGRectMake(CGRectGetMinX(viewFrame) - CGRectGetWidth(frame) - offset, CGRectGetMinY(frame), CGRectGetWidth(frame), CGRectGetHeight(frame)))];
+    [self setFrame:CGRectEnsureHolePixels(CGRectMake(CGRectGetMinX(viewFrame) - CGRectGetWidth(frame) - offset, CGRectGetMinY(frame), CGRectGetWidth(frame), CGRectGetHeight(frame)))];
 }
 
 #pragma mark -
