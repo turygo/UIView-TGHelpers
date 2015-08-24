@@ -141,8 +141,8 @@ static inline UIImage* createRoundedCornerMask(CGRect rect, CGFloat radius_tl, C
       shrinkSpacingToFit:(BOOL)shrinkSpacingToFit;
 
 // subviews
-+ (UIView *)firstResponder;
-- (UIView *)firstResponderInSubviews;
++ (UIView *)firstResponder NS_EXTENSION_UNAVAILABLE_IOS("Not available in app extensions.");
+- (UIView *)firstResponderInSubviews NS_EXTENSION_UNAVAILABLE_IOS("Not available in app extensions.");
 - (NSArray *)subviewsOfClass:(Class)aClass recursive:(BOOL)recursive;
 
 @end
