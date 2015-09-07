@@ -298,6 +298,16 @@ static NSString * const UIVIEW_HELPERS_FRAME_KVO_KEY = @"frame";
     return [self frame].origin.y;
 }
 
+- (CGFloat)frameMaxX
+{
+    return CGRectGetMaxX(self.frame);
+}
+
+- (CGFloat)frameMaxY
+{
+    return CGRectGetMaxY(self.frame);
+}
+
 - (CGFloat)frameSizeWidth
 {
     return [self frame].size.width;

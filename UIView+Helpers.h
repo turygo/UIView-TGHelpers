@@ -81,6 +81,8 @@ andReferenceIsSuperView:(BOOL)isReferenceSuperView;
 //Convenience Getters
 - (CGFloat)frameOriginX;
 - (CGFloat)frameOriginY;
+- (CGFloat)frameMaxX;
+- (CGFloat)frameMaxY;
 - (CGFloat)frameSizeWidth;
 - (CGFloat)frameSizeHeight;
 - (CGSize)frameSize;
