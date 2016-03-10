@@ -3,7 +3,7 @@
 //
 //  Created by Andrew Carter on 11/9/11.
 
-#import "UIView+Helpers.h"
+#import "UIView+TGHelpers.h"
 
 #import <QuartzCore/QuartzCore.h>
 

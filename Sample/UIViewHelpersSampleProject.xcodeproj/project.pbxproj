@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF87A5469CCC97266DA30B6B /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87A679899393B848A8C629 /* UIView+Helpers.m */; };
-		BF87A8004626294A52CA20C7 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87A679899393B848A8C629 /* UIView+Helpers.m */; };
+		A50118061C91278600521D35 /* UIView+TGHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A50118051C91278600521D35 /* UIView+TGHelpers.m */; };
 		F752938219D0196500D22D78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F752938119D0196500D22D78 /* main.m */; };
 		F752938519D0196500D22D78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F752938419D0196500D22D78 /* AppDelegate.m */; };
 		F752938819D0196500D22D78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F752938719D0196500D22D78 /* ViewController.m */; };
@@ -28,8 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF87A4C476C1F6060BB26D79 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "../../UIView+Helpers.h"; sourceTree = "<group>"; };
-		BF87A679899393B848A8C629 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "../../UIView+Helpers.m"; sourceTree = "<group>"; };
+		A50118041C91278600521D35 /* UIView+TGHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+TGHelpers.h"; path = "../../UIView+TGHelpers.h"; sourceTree = "<group>"; };
+		A50118051C91278600521D35 /* UIView+TGHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+TGHelpers.m"; path = "../../UIView+TGHelpers.m"; sourceTree = "<group>"; };
 		F752937C19D0196500D22D78 /* UIViewHelpersSampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIViewHelpersSampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F752938019D0196500D22D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F752938119D0196500D22D78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,8 +89,6 @@
 				F752938C19D0196500D22D78 /* Images.xcassets */,
 				F752938E19D0196500D22D78 /* LaunchScreen.xib */,
 				F752937F19D0196500D22D78 /* Supporting Files */,
-				BF87A4C476C1F6060BB26D79 /* UIView+Helpers.h */,
-				BF87A679899393B848A8C629 /* UIView+Helpers.m */,
 			);
 			path = UIViewHelpersSampleProject;
 			sourceTree = "<group>";
@@ -99,6 +96,8 @@
 		F752937F19D0196500D22D78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A50118041C91278600521D35 /* UIView+TGHelpers.h */,
+				A50118051C91278600521D35 /* UIView+TGHelpers.m */,
 				F752938019D0196500D22D78 /* Info.plist */,
 				F752938119D0196500D22D78 /* main.m */,
 			);
@@ -224,7 +223,7 @@
 				F752938819D0196500D22D78 /* ViewController.m in Sources */,
 				F752938519D0196500D22D78 /* AppDelegate.m in Sources */,
 				F752938219D0196500D22D78 /* main.m in Sources */,
-				BF87A5469CCC97266DA30B6B /* UIView+Helpers.m in Sources */,
+				A50118061C91278600521D35 /* UIView+TGHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F752939C19D0196500D22D78 /* UIViewHelpersSampleProjectTests.m in Sources */,
-				BF87A8004626294A52CA20C7 /* UIView+Helpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
